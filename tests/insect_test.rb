@@ -31,4 +31,17 @@ class InsectTest < Minitest::Test
     insect.seen_by = "Ruth"
     assert_equal("Ruth", insect.seen_by)
   end
+
+  def test_validator_should_fail_insect_with_no_name
+    i = Insect.new(name: "Fuzzy mantis", description: "Fierce and cuddly",
+                      seen_by: "Andrew", location: "In a tree")
+    assert(i.my_valid?, "should be valid at creation")
+
+    i.name = nil
+    refute(i.my_valid?, "should be invalid without a name")
+
+    i.name = ""
+    refute(i.my_valid?, "should be invalid with an empty name")
+  end
+
 end
