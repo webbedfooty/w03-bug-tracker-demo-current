@@ -33,7 +33,7 @@ class InsectTest < Minitest::Test
   end
 
   def test_validator_should_fail_insect_with_no_name
-    i = Insect.new(name: "Fuzzy mantis", description: "Fierce and cuddly",
+    i = Insect.create(name: "Fuzzy mantis", description: "Fierce and cuddly",
                       seen_by: "Andrew", location: "In a tree")
     assert(i.my_valid?, "should be valid at creation")
 
